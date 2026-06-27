@@ -1,3 +1,5 @@
+#include <string>
+
 class MarkdownConverter {
 public:
     MarkdownConverter() : input_file_name_("") {}
