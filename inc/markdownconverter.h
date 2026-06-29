@@ -1,5 +1,7 @@
 #include <string>
 
+enum class InputFileStatus { Ok = 0, Failed_To_Open };
+
 class MarkdownConverter {
 public:
     MarkdownConverter() : input_file_name_("") {}
@@ -7,7 +9,7 @@ public:
     ~MarkdownConverter() {}
 
     const std::string GetInputFileName() { return input_file_name_; }
-    unsigned int ReadInputFile();
+    InputFileStatus ReadInputFile();
 private:
     std::string input_file_name_;
 };

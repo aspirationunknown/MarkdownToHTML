@@ -3,12 +3,12 @@
 
 #include "markdownconverter.h"
 
-unsigned int MarkdownConverter::ReadInputFile() {
-    unsigned int result{0u};
+InputFileStatus MarkdownConverter::ReadInputFile() {
+    auto result{InputFileStatus::Ok};
     std::ifstream input_file;
     input_file.open(input_file_name_, std::ios::in);
     if (!input_file) {
-        result = 1u; // Failure to open input file
+        result = InputFileStatus::Failed_To_Open; // Failure to open input file
     } else {
         std::string line{};
         while (getline(input_file, line)) {
