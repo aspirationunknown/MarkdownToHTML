@@ -3,4 +3,4 @@
 
 #include "markdownconverter.h"
 
-int run_application(std::vector<std::string>& args, unsigned int Num_Args_Expected);
+int run_application(std::vector<std::string>& args);

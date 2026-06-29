@@ -11,5 +11,5 @@ int main(int argc, char* argv[]) {
     }
     std::vector<std::string> args{argv[1]};
 
-    return run_application(args, Num_Args_Expected);
+    return run_application(args);
 }
