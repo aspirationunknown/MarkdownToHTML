@@ -13,6 +13,7 @@ public:
   StyledText& operator=(const StyledText& styled_text);
   StyledText(StyledText&&) = delete;
   StyledText&& operator=(StyledText&&) = delete;
+
   friend bool operator==(const StyledText& lhs, const StyledText& rhs);
 
 private:
