@@ -2,6 +2,7 @@
 
 class MarkdownConverter : public Converter {
 public:
+    MarkdownConverter() = delete;
     MarkdownConverter(std::string input_file_name);
     ~MarkdownConverter();
 
