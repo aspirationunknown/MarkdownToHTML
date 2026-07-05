@@ -9,7 +9,20 @@
 - Start thinking about how the HTML output will be generated
 - Start refactoring MarkdownConverter class such that there is a Converter base class that contains the common functionality and sub-classes for the different input types
 - Start creating the base Writer class to be sub-classed for the different types of output
--  
+
+### Intermediate Representation
+- Bold - Enum with value of Bold
+- Italics - Enum with value of Italic
+- Bold + Italics - Enum with value of BoldItalic
+- Normal Text - Enum with value of NoStyle
+- Block Quote
+- Unordered List
+- Ordered List
+- Inline Code
+- Code Block
+- Horizontal Rule
+- Link
+- Image
 
 ## Notes For The Future
 - Have separate classes for each type of input file
