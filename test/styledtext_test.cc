@@ -5,6 +5,7 @@
 TEST(StyledTextTest, DefaultConstruction) {
     StyledText st{};
     StyledText expected{"", TextStyleState::NoStyle};
+
     ASSERT_EQ(st, expected);
 }
 
