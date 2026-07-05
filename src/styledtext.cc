@@ -13,3 +13,16 @@ StyledText::StyledText(std::string str) {
 }
 
 StyledText::StyledText(std::string str, TextStyleState tss) : value(str), style(tss) {}
+
+StyledText::StyledText(const StyledText& styled_text) {
+    this->value = styled_text.value;
+    this->style = styled_text.style;
+}
+
+StyledText& StyledText::operator=(const StyledText& styled_text) {
+    if (this != &styled_text) {
+        this->value = styled_text.value;
+        this->style = styled_text.style;
+    }
+    return *this;
+}
