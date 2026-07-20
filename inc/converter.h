@@ -8,12 +8,13 @@ public:
     Converter(std::string input_file_name);
     virtual ~Converter();
 
-    InputFileStatus ReadInputFile();
+    virtual InputFileStatus ReadInputFile();
     std::string GetInputFileBaseName();
 
 private:
     Converter();
 
+protected:
     std::string input_file_name_{};
     std::ifstream input_file_;
 };
