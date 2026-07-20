@@ -9,7 +9,7 @@ public:
     virtual ~Converter();
 
     InputFileStatus ReadInputFile();
-    std::string GetInputFileName();
+    std::string GetInputFileBaseName();
 
 private:
     Converter();

@@ -29,3 +29,19 @@ InputFileStatus Converter::ReadInputFile() {
 
     return result;
 }
+
+std::string Converter::GetInputFileBaseName() {
+    std::string result{input_file_name_};
+    // strip path
+    auto pos_path_end = input_file_name_.find_last_of("/\\");
+    if (pos_path_end != std::string::npos) {
+        result = result.substr(pos_path_end + 1);
+    }
+    // strip extension
+    auto pos_ext_begin = result.find_last_of(".");
+    if (pos_ext_begin != std::string::npos) {
+        result = result.substr(0, pos_ext_begin);
+    }
+    // return the file base name
+    return result;
+}

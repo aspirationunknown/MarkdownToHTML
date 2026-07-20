@@ -15,3 +15,11 @@ TEST(MarkdownConverterTest, ReadInputFileFailureToOpen) {
 
     EXPECT_EQ(mc.ReadInputFile(), InputFileStatus::Failed_To_Open);
 }
+
+TEST(MarkdownConverterTest, GetFileBaseName) {
+    std::string expected_base_name{"SimpleInputFile"};
+    std::string input_file_name{"data/SimpleInputFile.md"};
+    MarkdownConverter mc{input_file_name};
+
+    EXPECT_EQ(mc.GetInputFileBaseName(), expected_base_name);
+}
