@@ -28,14 +28,29 @@ TEST(MarkdownConverterTest, ProcessInputBold) {
     std::string input_file_name{"data/SimpleInputFile.md"};
     MarkdownConverter mc{input_file_name};
     std::string line{"**The Special Input**."};
-    std::vector<StyledText> result_vec{{"The", TextStyleState::Bold}, {" ", TextStyleState::NoStyle},
-                                       {"Special", TextStyleState::Bold}, {" ", TextStyleState::NoStyle},
-                                       {"Input", TextStyleState::Bold}, {".", TextStyleState::NoStyle}};
+    std::vector<StyledText> expected_vec{{"The", TextStyleState::Bold}, {" ", TextStyleState::Bold},
+                                         {"Special", TextStyleState::Bold}, {" ", TextStyleState::Bold},
+                                         {"Input", TextStyleState::Bold}, {".", TextStyleState::NoStyle}};
 
-    std::vector<StyledText> st_vec {mc.ProcessInputLine(line)};
+    std::vector<StyledText> result_vec {mc.ProcessInputLine(line)};
 
-    EXPECT_EQ(st_vec.size(), result_vec.size());
-    for(unsigned int i = 0; i < st_vec.size(); ++i) {
-        EXPECT_EQ(st_vec[i], result_vec[i]);
+    EXPECT_EQ(result_vec.size(), expected_vec.size());
+    for(unsigned int i = 0; i < result_vec.size(); ++i) {
+        EXPECT_EQ(result_vec[i], expected_vec[i]);
+    }
+}
+
+TEST(MarkdownConverterTest, ParseInputBold) {
+    std::string input_file_name{"FakeFileName.md"};
+    MarkdownConverter mc{input_file_name};
+    std::string input_line{"**Bold words**"};
+    std::vector<StyledText> expected_vec{{"Bold", TextStyleState::Bold}, {" ", TextStyleState::Bold},
+                                         {"words", TextStyleState::Bold}};
+    std::vector<StyledText> result_vec{};
+
+    mc.ParseInput(input_line, result_vec);
+    EXPECT_EQ(result_vec.size(), expected_vec.size());
+    for(unsigned int i = 0; i < result_vec.size(); ++i) {
+        EXPECT_EQ(result_vec[i], expected_vec[i]);
     }
 }

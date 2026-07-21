@@ -1,6 +1,12 @@
 #include <string>
+#include <type_traits>
 
-enum class TextStyleState { NoStyle, Bold, Italic, BoldItalic };
+enum class TextStyleState { NoStyle, Bold, Italic, BoldItalic, MaxEnum };
+
+template<typename T>
+constexpr auto ToIndex(T t) noexcept {
+    return static_cast<std::underlying_type_t<T>>(t);
+}
 
 class StyledText {
 public:

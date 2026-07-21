@@ -1,3 +1,4 @@
+#include <array>
 #include <vector>
 
 #include "converter.h"
@@ -13,6 +14,10 @@ public:
     MarkdownConverter& operator=(const MarkdownConverter&) = delete;
     MarkdownConverter&& operator=(MarkdownConverter&&) = delete;
 
-    InputFileStatus ReadInputFile() override;
+    void ParseInput(std::string input_line, std::vector<StyledText>& result);
     std::vector<StyledText> ProcessInputLine(std::string input_line);
+    InputFileStatus ReadInputFile() override;
+
+private:
+    std::array<std::string, ToIndex(TextStyleState::MaxEnum)> tags{"", "**|__", "*|_", "***|___"};
 };

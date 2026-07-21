@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 #include "markdownconverter.h"
 
@@ -26,7 +27,18 @@ InputFileStatus MarkdownConverter::ReadInputFile() {
 
 std::vector<StyledText> MarkdownConverter::ProcessInputLine(std::string input_line) {
     std::vector<StyledText> result{};
-
+    ParseInput(input_line, result);
 
     return result;
+}
+
+void MarkdownConverter::ParseInput(std::string input_line, std::vector<StyledText>& result) {
+    for (auto delim : tags) {
+        if (delim == "") {
+            // skipping NoStyle
+            continue;
+        }
+
+
+    }
 }
