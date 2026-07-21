@@ -23,3 +23,10 @@ InputFileStatus MarkdownConverter::ReadInputFile() {
 
     return result;
 }
+
+std::vector<StyledText> MarkdownConverter::ProcessInputLine(std::string input_line) {
+    std::vector<StyledText> result{};
+
+
+    return result;
+}

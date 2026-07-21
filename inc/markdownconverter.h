@@ -1,4 +1,7 @@
+#include <vector>
+
 #include "converter.h"
+#include "styledtext.h"
 
 class MarkdownConverter : public Converter {
 public:
@@ -11,4 +14,5 @@ public:
     MarkdownConverter&& operator=(MarkdownConverter&&) = delete;
 
     InputFileStatus ReadInputFile() override;
+    std::vector<StyledText> ProcessInputLine(std::string input_line);
 };
