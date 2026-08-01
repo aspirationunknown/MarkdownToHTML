@@ -28,4 +28,14 @@
 - Have separate classes for each type of input file
 - Have separate classes for each type of output file
 - Consider having optional specified output file base names (extension will be file type specific)
+- Consider using an Abstract Syntax Tree (AST) as an intermediate representation that can then be converted into the target format
+- Consider using Visitor Pattern for tree traversals
 -
+
+## Mermaid Diagram Example
+```mermaid
+graph TD
+  A[Start] --> B{Decision}
+  B --> |Yes| C[Finish]
+  B --> |No| D[Alternate]
+```
