@@ -3,7 +3,7 @@
 #include "markdowntohtml.h"
 
 int main(int argc, char* argv[]) {
-    constexpr auto Num_Args_Expected = 1u;
+    constexpr auto Num_Args_Expected = 1;
 
     if (argc != Num_Args_Expected + 1) {
         std::cerr << "Usage: " << argv[0] << " <input_file>" << std::endl;

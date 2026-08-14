@@ -1,20 +1,14 @@
-#include <fstream>
-#include <string>
+#ifndef CONVERTER_H
+#define CONVERTER_H
 
-enum class InputFileStatus { Ok = 0, Failed_To_Open };
+#include "ast.h"
 
 class Converter {
 public:
-    Converter(std::string input_file_name);
     virtual ~Converter();
 
-    virtual InputFileStatus ReadInputFile();
-    std::string GetInputFileBaseName();
-
-private:
-    Converter();
-
 protected:
-    std::string input_file_name_{};
-    std::ifstream input_file_;
+    Node* root;
 };
+
+#endif //CONVERTER_H
