@@ -1,3 +1,4 @@
+#include <memory>
 #include <system_error>
 
 #include "tokenizer.h"
@@ -14,4 +15,8 @@ Tokenizer::Tokenizer(std::string input_file_name, std::shared_ptr<TokenQueue> to
 
 Tokenizer::~Tokenizer() {
     input_file_.close();
+}
+
+std::weak_ptr<TokenQueue> Tokenizer::GetQueue() {
+    return token_queue_;
 }

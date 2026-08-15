@@ -1,7 +1,7 @@
 #ifndef CONVERTER_H
 #define CONVERTER_H
 
-#include "ast.h"
+#include "node.h"
 
 class Converter {
 public:

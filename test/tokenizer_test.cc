@@ -8,6 +8,7 @@
 
 TEST(TokenizerTest, TokenizerConstructionTest) {
     std::string input_file_name{"notes/HtmlNotes.md"};
+
     try {
         auto tq = std::make_shared<TokenQueue>();
         Tokenizer tokenizer{input_file_name, tq};
@@ -29,6 +30,16 @@ TEST(TokenizerTest, TokenizerFailedConstructionTest) {
     }
 }
 
-TEST(TokenizerTest, Placeholder) {
-    SUCCEED();
+TEST(TokenizerTest, GetQueueTest) {
+    std::string input_file_name{"data/SimpleInputFile.md"};
+
+    try {
+        auto tq = std::make_shared<TokenQueue>();
+        Tokenizer tokenizer{input_file_name, tq};
+        auto queue_ptr = tokenizer.GetQueue();
+
+    } catch(std::system_error err) {
+        FAIL();
+    }
+
 }
