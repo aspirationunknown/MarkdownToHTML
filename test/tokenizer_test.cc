@@ -38,6 +38,11 @@ TEST(TokenizerTest, GetQueueTest) {
         Tokenizer tokenizer{input_file_name, tq};
         auto queue_ptr = tokenizer.GetQueue();
 
+        if (auto q = queue_ptr.lock()) {
+            ASSERT_EQ(q->Size(), 0); // just checks that the queue was retrieved
+        } else {
+            FAIL();
+        }
     } catch(std::system_error err) {
         FAIL();
     }

@@ -12,6 +12,7 @@ public:
     TokenQueue() {}
     ~TokenQueue() {}
 
+    std::unique_ptr<Node> Pop();
     void Push(std::unique_ptr<Node>);
     std::size_t Size();
 
