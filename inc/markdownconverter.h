@@ -1,8 +1,9 @@
 #ifndef MARKDOWN_CONVERTER_H
 #define MARKDOWN_CONVERTER_H
 
+#include <string>
+
 #include "converter.h"
-#include "styledtext.h"
 
 class MarkdownConverter : public Converter {
 public:
