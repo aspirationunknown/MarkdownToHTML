@@ -43,7 +43,23 @@ TEST(TokenizerTest, GetQueueTest) {
         } else {
             FAIL();
         }
-    } catch(std::system_error err) {
+    } catch (std::system_error err) {
+        FAIL();
+    }
+}
+
+TEST(TokenizerTest, TokenizeTest) {
+    std::string input_file_name{"data/TextInputFile.md"};
+    auto tq = std::make_shared<TokenQueue>();
+
+    try {
+        Tokenizer tokenizer{input_file_name, tq};
+        tokenizer.Tokenize();
+        auto queue_ptr = tokenizer.GetQueue();
+        if (auto q = queue_ptr.lock()) {
+            ASSERT_EQ(q->Size(), 5);
+        }
+    } catch (std::system_error err) {
         FAIL();
     }
 

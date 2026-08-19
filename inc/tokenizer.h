@@ -18,6 +18,7 @@ public:
     Tokenizer&& operator=(Tokenizer&&) = delete;
 
     std::weak_ptr<TokenQueue> GetQueue();
+    void Tokenize();
 
 private:
     std::string input_file_name_;

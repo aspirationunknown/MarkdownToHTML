@@ -1,3 +1,4 @@
+#include <iostream>
 #include <memory>
 #include <system_error>
 
@@ -19,4 +20,12 @@ Tokenizer::~Tokenizer() {
 
 std::weak_ptr<TokenQueue> Tokenizer::GetQueue() {
     return token_queue_;
+}
+
+void Tokenizer::Tokenize() {
+    std::string line;
+    while (getline(input_file_, line)) {
+        std::cout << line << std::endl;
+
+    }
 }
