@@ -8,46 +8,134 @@
 // Abstract base class for all nodes in the Abstract Syntax Tree (AST)
 struct Node {
 public:
+    explicit Node();
+    explicit Node(std::string text): text_(text) {}
     virtual ~Node() {}
-    virtual void accept(Visitor&) = 0;
+    virtual void Accept(Visitor&) = 0;
+
+protected:
+    std::string text_;
 };
 
-struct TitleNode : public Node {};
+struct TitleNode : public Node {
+    TitleNode() = delete;
+    TitleNode(std::string text);
+    ~TitleNode() = default;
 
-struct HeaderNode : public Node {};
+    void Accept(Visitor& visitor) override;
+};
+
+struct HeaderNode : public Node {
+public:
+    HeaderNode() = delete;
+    HeaderNode(std::string text, unsigned short lvl);
+    ~HeaderNode() = default;
+
+    void Accept(Visitor& visitor) override;
+    unsigned short GetLevel();
+
+private:
+    unsigned short lvl_;
+};
 
 struct BoldTextNode : public Node {
-public:
     BoldTextNode() = delete;
     BoldTextNode(std::string text);
     ~BoldTextNode() = default;
 
-    void accept(Visitor& visitor);
-
-private:
-    std::string text_;
+    void Accept(Visitor& visitor) override;
 };
 
-struct ItalicTextNode : public Node {};
+struct ItalicTextNode : public Node {
+    ItalicTextNode() = delete;
+    ItalicTextNode(std::string text);
+    ~ItalicTextNode() = default;
 
-struct BoldItalicTextNode : public Node {};
+    void Accept(Visitor& visitor) override;
+};
 
-struct PlainTextNode : public Node {};
+struct BoldItalicTextNode : public Node {
+    BoldItalicTextNode() = delete;
+    BoldItalicTextNode(std::string text);
+    ~BoldItalicTextNode() = default;
 
-struct BlockQuoteNode : public Node {};
+    void Accept(Visitor& visitor) override;
+};
 
-struct OrderedListNode : Node {};
+struct PlainTextNode : public Node {
+    PlainTextNode() = delete;
+    PlainTextNode(std::string text);
+    ~PlainTextNode() = default;
 
-struct UnorderedListNode : Node {};
+    void Accept(Visitor& visitor) override;
+};
 
-struct InlineCodeNode : Node {};
+struct BlockQuoteNode : public Node {
+    BlockQuoteNode() = delete;
+    BlockQuoteNode(std::string text);
+    ~BlockQuoteNode() = default;
 
-struct CodeBlockNode : Node {};
+    void Accept(Visitor& visitor) override;
+};
 
-struct HorizontalRuleNode : Node {};
+struct OrderedListNode : Node {
+public:
+    OrderedListNode() = delete;
+    OrderedListNode(std::string text, unsigned short rank);
+    ~OrderedListNode() = default;
 
-struct URLLinkNode : Node {};
+    void Accept(Visitor& visitor) override;
+    unsigned short GetRank();
 
-struct ImageNode : Node {};
+private:
+    unsigned short rank_;
+};
+
+struct UnorderedListNode : Node {
+    UnorderedListNode() = delete;
+    UnorderedListNode(std::string text);
+    ~UnorderedListNode() = default;
+
+    void Accept(Visitor& visitor) override;
+};
+
+struct InlineCodeNode : Node {
+    InlineCodeNode() = delete;
+    InlineCodeNode(std::string text);
+    ~InlineCodeNode() = default;
+
+    void Accept(Visitor& visitor) override;
+};
+
+struct CodeBlockNode : Node {
+    CodeBlockNode() = delete;
+    CodeBlockNode(std::string text);
+    ~CodeBlockNode() = default;
+
+    void Accept(Visitor& visitor) override;
+};
+
+struct HorizontalRuleNode : Node {
+    HorizontalRuleNode() = default;
+    ~HorizontalRuleNode() = default;
+
+    void Accept(Visitor& visitor) override;
+};
+
+struct HyperlinkNode : Node {
+    HyperlinkNode() = delete;
+    HyperlinkNode(std::string url);
+    ~HyperlinkNode() = default;
+
+    void Accept(Visitor& visitor) override;
+};
+
+struct ImageNode : Node {
+    ImageNode() = delete;
+    ImageNode(std::string url);
+    ~ImageNode() = default;
+
+    void Accept(Visitor& visitor) override;
+};
 
 #endif // AST_H

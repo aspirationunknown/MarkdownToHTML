@@ -1,5 +1,5 @@
 #include "node.h"
 
-BoldTextNode::BoldTextNode(std::string text): text_(text) {}
+BoldTextNode::BoldTextNode(std::string text): Node(text) {}
 
-void BoldTextNode::accept(Visitor& visitor) {}
+void BoldTextNode::Accept(Visitor& visitor) {}
