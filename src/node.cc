@@ -1,5 +1,9 @@
 #include "node.h"
 
+std::string Node::GetText() {
+    return text_;
+}
+
 TitleNode::TitleNode(std::string text): Node(text) {}
 
 void TitleNode::Accept(Visitor& visitor) {}

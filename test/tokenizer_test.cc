@@ -64,3 +64,20 @@ TEST(TokenizerTest, TokenizeTest) {
     }
 
 }
+
+TEST(TokenizerTest, ProcessLineTest) {
+    std::string line{"This is a plain text line.\n"};
+    try {
+        std::string input_file_name{"data/PlainTextLine.md"};
+        auto tq = std::make_shared<TokenQueue>();
+        Tokenizer tokenizer{input_file_name, tq};
+        tokenizer.Tokenize();
+        if (auto q = tokenizer.GetQueue().lock()) {
+            ASSERT_EQ(q->Size(), 1);
+            auto front = q->Pop();
+            ASSERT_EQ(front->GetText(), line);
+        }
+    } catch (std::system_error err) {
+        FAIL();
+    }
+}

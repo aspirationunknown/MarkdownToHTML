@@ -23,9 +23,16 @@ std::weak_ptr<TokenQueue> Tokenizer::GetQueue() {
 }
 
 void Tokenizer::Tokenize() {
-    std::string line;
+    std::string line{};
+    std::string processed_line{};
     while (getline(input_file_, line)) {
-        std::cout << line << std::endl;
-
+        processed_line = ProcessLine(line);
     }
+}
+
+std::string Tokenizer::ProcessLine(std::string line) {
+    for (auto& c : line) {
+        std::cout << "'" << c << "'" << std::endl;
+    }
+    return ""; // Placeholder
 }

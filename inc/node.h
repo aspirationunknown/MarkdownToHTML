@@ -13,6 +13,8 @@ public:
     virtual ~Node() {}
     virtual void Accept(Visitor&) = 0;
 
+    std::string GetText();
+
 protected:
     std::string text_;
 };

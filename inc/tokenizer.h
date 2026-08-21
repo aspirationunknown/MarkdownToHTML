@@ -21,6 +21,8 @@ public:
     void Tokenize();
 
 private:
+    std::string ProcessLine(std::string line);
+
     std::string input_file_name_;
     std::ifstream input_file_;
     std::shared_ptr<TokenQueue> token_queue_;
