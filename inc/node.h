@@ -8,7 +8,7 @@
 // Abstract base class for all nodes in the Abstract Syntax Tree (AST)
 struct Node {
 public:
-    explicit Node();
+    explicit Node() = default;
     explicit Node(std::string text): text_(text) {}
     virtual ~Node() {}
     virtual void Accept(Visitor&) = 0;
