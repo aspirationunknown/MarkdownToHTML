@@ -1,3 +1,4 @@
+#include <cctype>
 #include <iostream>
 #include <memory>
 #include <system_error>
@@ -31,8 +32,9 @@ void Tokenizer::Tokenize() {
 }
 
 std::string Tokenizer::ProcessLine(std::string line) {
+    std::string result{};
     for (auto& c : line) {
         std::cout << "'" << c << "'" << std::endl;
     }
-    return ""; // Placeholder
+    return result; // Placeholder
 }

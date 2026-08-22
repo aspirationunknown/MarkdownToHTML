@@ -27,7 +27,28 @@ private:
     std::string input_file_name_;
     std::ifstream input_file_;
     std::shared_ptr<TokenQueue> token_queue_;
-    std::array<std::string, 1> symbols{"#"};
+    std::array<std::string, 20> symbols{
+        "#",// Title or Header 1
+        "##",// Header 2
+        "###",// Header 3
+        "####",// Header 4
+        "#####",// Header 5
+        "*",// Italic or Unordered List Item
+        "**",// Bold
+        "***",// Bold&Italic or Horizontal Rule
+        "_",// Italic
+        "__",// Bold
+        "___",// Bold&Italic or Horizontal Rule
+        "-",// Unordered List Item
+        "+",// Unordered List Item
+        "---",// Horizontal Rule
+        ">",// Block Quote
+        "`", // Inline Code
+        "'''",// Code Block
+        "#.", // Numbered List Item, numbers can keep increasing
+        "[text](url)",// Hyperlink
+        "![alt](url)" // Image
+    };
 };
 
 #endif //TOKENIZER_H

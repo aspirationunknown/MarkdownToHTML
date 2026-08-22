@@ -30,7 +30,8 @@
 - Consider having optional specified output file base names (extension will be file type specific)
 - Consider using an Abstract Syntax Tree (AST) as an intermediate representation that can then be converted into the target format
 - Consider using Visitor Pattern for tree traversals
--
+- Consider using Regexes for capturing symbols and their associate text
+- 
 
 ## Mermaid Diagram Example
 ```mermaid
