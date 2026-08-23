@@ -3,6 +3,7 @@
 #include <system_error>
 #include <string>
 
+#include "formats.h"
 #include "tokenizer.h"
 #include "tokenqueue.h"
 
@@ -75,7 +76,12 @@ TEST(TokenizerTest, ProcessLineTest) {
         if (auto q = tokenizer.GetQueue().lock()) {
             ASSERT_EQ(q->Size(), 1);
             auto front = q->Pop();
-            ASSERT_EQ(front->GetText(), line);
+            auto elem = std::get_if<PlainText>(&front);
+            if (elem) {
+                ASSERT_EQ(elem->GetText(), line);
+            } else {
+                FAIL();
+            }
         }
     } catch (std::system_error err) {
         FAIL();

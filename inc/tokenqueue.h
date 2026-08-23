@@ -3,21 +3,20 @@
 
 #include <cstddef>
 #include <deque>
-#include <memory>
 
-#include "node.h"
+#include "formats.h"
 
 class TokenQueue {
 public:
     TokenQueue() {}
     ~TokenQueue() {}
 
-    std::unique_ptr<Node> Pop();
-    void Push(std::unique_ptr<Node>);
+    Formats Pop();
+    void Push(Formats);
     std::size_t Size();
 
 private:
-    std::deque<std::unique_ptr<Node>> token_queue_;
+    std::deque<Formats> token_queue_;
 };
 
 #endif //TOKEN_QUEUE_H
