@@ -1,5 +1,5 @@
-#ifndef AST_H
-#define AST_H
+#ifndef FORMATS_H
+#define FORMATS_H
 
 #include <string>
 #include <variant>
@@ -181,4 +181,4 @@ Hyperlink,
 Image
 >;
 
-#endif // AST_H
+#endif // FORMATS_H

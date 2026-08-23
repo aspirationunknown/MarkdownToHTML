@@ -1,5 +1,4 @@
 #include "tokenqueue.h"
-#include "formats.h"
 
 void TokenQueue::Push(Formats node) {
     token_queue_.push_back(node);
