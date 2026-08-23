@@ -1,4 +1,3 @@
 .clangd
 build/
 .cache/
-notes/VisitorPatternNotes.md
