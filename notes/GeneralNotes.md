@@ -31,7 +31,9 @@
 - Consider using an Abstract Syntax Tree (AST) as an intermediate representation that can then be converted into the target format
 - Consider using Visitor Pattern for tree traversals
 - Consider using Regexes for capturing symbols and their associate text
-- 
+- Understand how std::visit works and how it can be applied to my task
+- How does the architecture need to change to facilitate using std::visit?
+-  
 
 ## Mermaid Diagram Example
 ```mermaid
