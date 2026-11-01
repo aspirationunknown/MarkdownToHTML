@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
   const std::span<char *> args{argv, static_cast<std::size_t>(argc)};
 
   if (argc != Num_Args_Expected + 1) {
-    std::cerr << "Usage: " << argv[0] << " <input_file>\n";
+    std::cerr << "Usage: " << args[0] << " <input_file>\n";
     return 1;
   }
 
