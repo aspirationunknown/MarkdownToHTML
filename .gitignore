@@ -1,3 +1,6 @@
 .clangd
 build/
 .cache/
+.clang-tidy
+build_clang/
+clang-tidy-checklist.md

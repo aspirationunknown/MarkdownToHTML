@@ -3,7 +3,12 @@
 
 class Converter {
 public:
-    virtual ~Converter();
+  Converter() = default;
+  virtual ~Converter();
+  Converter(const Converter &) = default;
+  Converter &operator=(const Converter &) = default;
+  Converter(Converter &&) = default;
+  Converter &operator=(Converter &&) = default;
 };
 
-#endif //CONVERTER_H
+#endif // CONVERTER_H

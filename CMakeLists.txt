@@ -1,5 +1,17 @@
 cmake_minimum_required(VERSION 3.16)
 
+option(USE_CLANG "Build using Clang instead of the default compiler" OFF)
+if(USE_CLANG)
+  find_program(CLANG_C_COMPILER NAMES clang)
+  find_program(CLANG_CXX_COMPILER NAMES clang++)
+  if(CLANG_C_COMPILER AND CLANG_CXX_COMPILER)
+    set(CMAKE_C_COMPILER "${CLANG_C_COMPILER}")
+    set(CMAKE_CXX_COMPILER "${CLANG_CXX_COMPILER}")
+  else()
+    message(WARNING "USE_CLANG requested but clang/clang++ was not found; falling back to the default compiler")
+  endif()
+endif()
+
 project(MarkdownToHTML VERSION 0.1.0 LANGUAGES CXX)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -8,6 +20,16 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 include(CTest)
+
+option(ENABLE_CLANG_TIDY "Run clang-tidy during the build" ON)
+if(ENABLE_CLANG_TIDY)
+  find_program(CLANG_TIDY_EXE NAMES clang-tidy)
+  if(CLANG_TIDY_EXE)
+    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}")
+  else()
+    message(WARNING "clang-tidy requested but not found; skipping")
+  endif()
+endif()
 
 file(GLOB_RECURSE PROJECT_SOURCE_FILES CONFIGURE_DEPENDS
     "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c"
