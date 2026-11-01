@@ -8,8 +8,8 @@
 class MarkdownConverter : public Converter {
 public:
   MarkdownConverter() = delete;
-  MarkdownConverter(std::string output_file_name);
-  ~MarkdownConverter() override;
+  MarkdownConverter(const std::string &output_file_name);
+  ~MarkdownConverter() override = default;
   MarkdownConverter(const MarkdownConverter &) = delete;
   MarkdownConverter(MarkdownConverter &&) = delete;
   MarkdownConverter &operator=(const MarkdownConverter &) = delete;
