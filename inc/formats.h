@@ -29,7 +29,8 @@ public:
   Header(Header &&) = default;
   Header &operator=(Header &&) = default;
 
-  unsigned short GetLevel();
+  [[nodiscard]]
+  unsigned short GetLevel() const;
   std::string GetText();
 
 private:
@@ -122,7 +123,8 @@ public:
   OrderedList(OrderedList &&) = default;
   OrderedList &operator=(OrderedList &&) = default;
 
-  unsigned short GetRank();
+  [[nodiscard]]
+  unsigned short GetRank() const;
   std::string GetText();
 
 private:
@@ -184,9 +186,13 @@ struct HorizontalRule {
   HorizontalRule &operator=(HorizontalRule &&) = default;
 };
 
+struct Url {
+  std::string url;
+};
+
 struct Hyperlink {
   Hyperlink() = delete;
-  Hyperlink(std::string text, std::string url);
+  Hyperlink(std::string text, Url url);
   ~Hyperlink() = default;
   Hyperlink(const Hyperlink &) = default;
   Hyperlink &operator=(const Hyperlink &) = default;
@@ -194,16 +200,17 @@ struct Hyperlink {
   Hyperlink &operator=(Hyperlink &&) = default;
 
   std::string GetText();
-  std::string GetUrl();
+  [[nodiscard]]
+  std::string GetUrl() const;
 
 private:
   std::string text_;
-  std::string url_;
+  Url url_;
 };
 
 struct Image {
   Image() = delete;
-  Image(std::string alt, std::string url);
+  Image(std::string alt_text, Url url);
   ~Image() = default;
   Image(const Image &) = default;
   Image &operator=(const Image &) = default;
@@ -211,11 +218,12 @@ struct Image {
   Image &operator=(Image &&) = default;
 
   std::string GetAlt();
-  std::string GetUrl();
+  [[nodiscard]]
+  std::string GetUrl() const;
 
 private:
   std::string alt_;
-  std::string url_;
+  Url url_;
 };
 
 using Formats = std::variant<std::monostate, Title, Header, BoldText,

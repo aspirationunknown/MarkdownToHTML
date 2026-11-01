@@ -16,7 +16,7 @@ public:
   TokenQueue &operator=(TokenQueue &&) = default;
 
   Formats Pop();
-  void Push(Formats);
+  void Push(const Formats &);
   std::size_t Size();
 
 private:
