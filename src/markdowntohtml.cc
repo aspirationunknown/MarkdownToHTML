@@ -5,15 +5,14 @@
 #include "markdowntokenizer.h"
 #include "tokenqueue.h"
 
-int run_application(std::vector<std::string>& args) {
+int run_application(const std::span<char *> &args) {
 
-    try {
-        auto tq = std::make_shared<TokenQueue>();
-        MarkdownTokenizer tokenizer(args[0], tq);
-    } catch(std::system_error err) {
-        std::cerr << "Failed to open file, error: " << err.what() << std::endl;
-    }
+  try {
+    auto token_queue = std::make_shared<TokenQueue>();
+    MarkdownTokenizer tokenizer(args[0], token_queue);
+  } catch (std::system_error err) {
+    std::cerr << "Failed to open file, error: " << err.what() << "\n";
+  }
 
-
-    return 0;
+  return 0;
 }

@@ -1,10 +1,8 @@
 #ifndef MARKDOWN_TO_HTML_H
 #define MARKDOWN_TO_HTML_H
 
+#include <span>
 
-#include <string>
-#include <vector>
+int run_application(const std::span<char *> &args);
 
-int run_application(std::vector<std::string>& args);
-
-#endif //MARKDOWN_TO_HTML_H
+#endif // MARKDOWN_TO_HTML_H
