@@ -19,7 +19,7 @@ public:
   void Tokenize() override;
 
 private:
-  std::string ProcessLine(std::string line);
+  static std::string ProcessLine(const std::string &line);
   static constexpr std::size_t SYMBOL_COUNT = 20;
   std::array<std::string, SYMBOL_COUNT> symbols{
       "#",           // Title or Header 1
