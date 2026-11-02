@@ -9,21 +9,23 @@
 
 class Tokenizer {
 public:
-    Tokenizer() = delete;
-    Tokenizer(std::string input_file_name, std::shared_ptr<TokenQueue> token_queue);
-    virtual ~Tokenizer() = default;
-    Tokenizer(Tokenizer&) = delete;
-    Tokenizer& operator=(Tokenizer&) = delete;
-    Tokenizer(Tokenizer&&) = delete;
-    Tokenizer&& operator=(Tokenizer&&) = delete;
+  Tokenizer() = delete;
+  Tokenizer(std::string input_file_name,
+            std::shared_ptr<TokenQueue> token_queue);
+  virtual ~Tokenizer();
+  Tokenizer(Tokenizer &) = delete;
+  Tokenizer &operator=(Tokenizer &) = delete;
+  Tokenizer(Tokenizer &&) = delete;
+  Tokenizer &&operator=(Tokenizer &&) = delete;
 
-    std::weak_ptr<TokenQueue> GetQueue();
-    virtual void Tokenize() = 0;
+  std::weak_ptr<TokenQueue> GetQueue();
+  virtual void Tokenize() = 0;
+  bool GetLine(std::string &line);
 
-protected:
-    std::string input_file_name_;
-    std::ifstream input_file_;
-    std::shared_ptr<TokenQueue> token_queue_;
+private:
+  std::string input_file_name_;
+  std::ifstream input_file_;
+  std::shared_ptr<TokenQueue> token_queue_;
 };
 
-#endif //TOKENIZER_H
+#endif // TOKENIZER_H

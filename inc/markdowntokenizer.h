@@ -10,7 +10,7 @@ public:
   MarkdownTokenizer() = delete;
   MarkdownTokenizer(std::string input_file_name,
                     std::shared_ptr<TokenQueue> token_queue);
-  ~MarkdownTokenizer() override;
+  ~MarkdownTokenizer() override = default;
   MarkdownTokenizer(MarkdownTokenizer &) = delete;
   MarkdownTokenizer &operator=(MarkdownTokenizer &) = delete;
   MarkdownTokenizer(MarkdownTokenizer &&) = delete;
